@@ -1,0 +1,161 @@
+.mainWrapper {
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 140px;
+    /* Forces content below the absolute navbar */
+    padding: 40px 0;
+}
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: '20px';
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navLink:hover {
+    color: #ffffff;
+}
+
+/* Blog Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+    margin-top: 20px;
+}
+
+/* Blog Card */
+.card {
+    background-color: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(79, 70, 229, 0.4);
+    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.1), 0 0 20px rgba(79, 70, 229, 0.05);
+}
+
+/* Image Container */
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.img {
+    object-fit: cover;
+}
+
+/* Card Typography & Content */
+.cardContent {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #a3a3a3;
+    margin: 0 0 24px 0;
+    flex-grow: 1;
+}
+
+/* Button Link (Pill Shape Style) */
+.button {
+    display: inline-block;
+    align-self: flex-start;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #4f46e5;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 25px;
+        width: 95%;
+    }
+
+    .container {
+        margin-top: 160px;
+        width: 95%;
+    }
+}
