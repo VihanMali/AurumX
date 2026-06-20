@@ -57,7 +57,7 @@ const BlogPage = () => {
               <p className={styles.description}>
                 Learning to code is one of the most versatile skills you can acquire. It empowers you to automate mundane tasks, drastically boosts your career marketability, and provides a structured way to solve complex problems logically.
               </p>
-              <Link href='/blogs/manifestBlog1' className={styles.button}>
+              <Link href='/blogs/codingBlog1' className={styles.button}>
                 Read More
               </Link>
             </div>
