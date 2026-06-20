@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Manifedt Your Dream Life | AurumX',
+  title: 'Manifeft Your Dream Life | AurumX',
   description: 'Mastering tools for frontend speed and flexibility.',
 };
 

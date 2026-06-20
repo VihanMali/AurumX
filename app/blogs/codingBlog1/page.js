@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Building Modern Interfaces with React | DevJournal',
+  title: 'How to Start Coding in 2026 | AurumX',
   description: 'Mastering tools for frontend speed and flexibility.',
 };
 
