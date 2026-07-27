@@ -1,9 +1,24 @@
 import Link from 'next/link';
+import ProgressBar from '../../components/ProgressBar';
+import ContextLens from '../../components/ContextLens';
 
 export const metadata = {
     title: 'How to Start Coding in 2026 | AurumX',
     description: 'Mastering tools for frontend speed and flexibility.',
 };
+
+function calculateReadTime(sections) {
+    let wordCount = 0;
+    sections.forEach(section => {
+        if (section.type === 'list' && Array.isArray(section.items)) {
+            wordCount += section.items.join(' ').split(/\s+/).length;
+        } else if (section.content) {
+            wordCount += section.content.split(/\s+/).length;
+        }
+    });
+    const minutes = Math.ceil(wordCount / 200);
+    return `${minutes} min read`;
+}
 
 export default function BlogPage() {
     const post = {
@@ -11,7 +26,6 @@ export default function BlogPage() {
         date: "June 17, 2026",
         author: "Vihan Mali",
         category: "Programming",
-        readTime: "8 min read",
 
         sections: [
             {
@@ -98,30 +112,30 @@ export default function BlogPage() {
                     "Do not let the speed of modern tools intimidate you. Instead, use it as a superpower. Let AI handle the tedious boilerplate while you focus your energy on architecture, system workflows, and creating clean user experiences."
             },
             {
-                type:"paragraph",
-                content:"If someone says:"
+                type: "paragraph",
+                content: "If someone says:"
             },
             {
-                type:"quote",
-                content:"If 70% code is written by AI, then why we need developers?"
+                type: "quote",
+                content: "If 70% code is written by AI, then why we need developers?"
             },
             {
-                type:"paragraph",
-                content:"Just ask a counter question:"
+                type: "paragraph",
+                content: "Just ask a counter question:"
             },
             {
-                type:"quote",
-                content:"If an aeroplane is on autopilot mode 95% of times, then why job of pilot is still in high demand"
+                type: "quote",
+                content: "If an aeroplane is on autopilot mode 95% of times, then why job of pilot is still in high demand"
             },
-            ,
             {
-                type:"paragraph",
-                content:"The thing is that the delicate actions like takeoffs and landings must be handled by a human, not by a machine. AI has not yet reached the level at what we think it is. neither AI can write 100% perfect code nor a human can. but both of them can even write 200% PERFECT code"
+                type: "paragraph",
+                content: "The thing is that the delicate actions like takeoffs and landings must be handled by a human, not by a machine. AI has not yet reached the level at what we think it is. neither AI can write 100% perfect code nor a human can. but both of them can even write 200% PERFECT code"
             }
         ]
-
     };
 
+    // Calculate dynamic reading time
+    const calculatedReadTime = calculateReadTime(post.sections);
 
     const styles = {
         container: {
@@ -137,6 +151,9 @@ export default function BlogPage() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            position: 'sticky',
+            top: 0,
+            zIndex: 10,
         },
         logo: {
             fontSize: '1.5rem',
@@ -233,6 +250,12 @@ export default function BlogPage() {
 
     return (
         <div style={styles.container}>
+            {/* Scroll Progress Bar at top of viewport */}
+            <ProgressBar />
+            
+            {/* Dynamic Context Lens header */}
+            <ContextLens />
+
             <nav style={styles.nav}>
                 <Link href="/blogs" style={styles.logo}>AurumX</Link>
                 <div style={styles.navLinks}>
@@ -248,7 +271,8 @@ export default function BlogPage() {
                         <span>•</span>
                         <span>{post.date}</span>
                         <span>•</span>
-                        <span>{post.readTime}</span>
+                        {/* Dynamic reading time */}
+                        <span>{calculatedReadTime}</span>
                     </div>
                     <h1 style={styles.title}>{post.title}</h1>
 

@@ -1,11 +1,27 @@
 import Link from 'next/link';
+import ProgressBar from '../../components/ProgressBar';
+import ContextLens from '../../components/ContextLens';
 
 export const metadata = {
-  title: 'Manifeft Your Dream Life | AurumX',
+  title: 'How to Start Coding in 2026 | AurumX',
   description: 'Mastering tools for frontend speed and flexibility.',
 };
 
+function calculateReadTime(sections) {
+  let wordCount = 0;
+  sections.forEach(section => {
+    if (section.type === 'list' && Array.isArray(section.items)) {
+      wordCount += section.items.join(' ').split(/\s+/).length;
+    } else if (section.content) {
+      wordCount += section.content.split(/\s+/).length;
+    }
+  });
+  const minutes = Math.ceil(wordCount / 200);
+  return `${minutes} min read`;
+}
+
 export default function BlogPage() {
+
   const post = {
     title: "Stop Waiting for Your Dream Life — Start Managing It",
     date: "June 19, 2026",
@@ -14,189 +30,191 @@ export default function BlogPage() {
     readTime: "6 min read",
 
     sections: [
-  {
-    type: "paragraph",
-    content:
-      "Everybody talks about having a dream life. Traveling the world, building a successful career, staying fit, having money, having time, being happy. But here's something nobody tells you: your dream life isn't one giant event waiting for you in the future. It's a collection of ordinary days that you manage well."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Most people don't fail because their dreams are too big. They fail because they never learn how to manage real life. The people who seem to have it together usually aren't superhuman—they just have systems that keep their lives from falling apart."
-  },
+      {
+        type: "paragraph",
+        content:
+          "Everybody talks about having a dream life. Traveling the world, building a successful career, staying fit, having money, having time, being happy. But here's something nobody tells you: your dream life isn't one giant event waiting for you in the future. It's a collection of ordinary days that you manage well."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Most people don't fail because their dreams are too big. They fail because they never learn how to manage real life. The people who seem to have it together usually aren't superhuman—they just have systems that keep their lives from falling apart."
+      },
 
-  {
-    type: "heading",
-    content: "Stop Trying to Do Everything"
-  },
-  {
-    type: "paragraph",
-    content:
-      "One of the fastest ways to destroy your dream life is trying to build all of it at once. You don't need six goals right now. Pick one priority. If you're a student, maybe that's academics. If you're building a business, maybe that's learning sales. Everything else can exist, but it doesn't deserve equal attention."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Think of life like investing. The more you spread your energy everywhere, the smaller your returns become."
-  },
+      {
+        type: "heading",
+        content: "Stop Trying to Do Everything"
+      },
+      {
+        type: "paragraph",
+        content:
+          "One of the fastest ways to destroy your dream life is trying to build all of it at once. You don't need six goals right now. Pick one priority. If you're a student, maybe that's academics. If you're building a business, maybe that's learning sales. Everything else can exist, but it doesn't deserve equal attention."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Think of life like investing. The more you spread your energy everywhere, the smaller your returns become."
+      },
 
-  {
-    type: "heading",
-    content: "Design Your Days, Not Your Future"
-  },
-  {
-    type: "paragraph",
-    content:
-      "People spend hours imagining where they'll be in ten years. Almost nobody plans tomorrow. Your future doesn't magically appear. It gets manufactured by ordinary Tuesdays."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Every night, ask yourself these three questions:"
-  },
-  {
-    type: "list",
-    items: [
-      "What are the three things that absolutely need to get done tomorrow?",
-      "What's likely to distract me?",
-      "What time am I starting work?"
+      {
+        type: "heading",
+        content: "Design Your Days, Not Your Future"
+      },
+      {
+        type: "paragraph",
+        content:
+          "People spend hours imagining where they'll be in ten years. Almost nobody plans tomorrow. Your future doesn't magically appear. It gets manufactured by ordinary Tuesdays."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Every night, ask yourself these three questions:"
+      },
+      {
+        type: "list",
+        items: [
+          "What are the three things that absolutely need to get done tomorrow?",
+          "What's likely to distract me?",
+          "What time am I starting work?"
+        ]
+      },
+      {
+        type: "paragraph",
+        content:
+          "Winning three important things every day compounds faster than constantly feeling overwhelmed."
+      },
+
+      {
+        type: "heading",
+        content: "Protect Your Energy Like Money"
+      },
+      {
+        type: "paragraph",
+        content:
+          "People understand saving money. They don't understand saving energy. You can always make money again, but mental energy is limited."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Stop wasting it arguing online, doom-scrolling, comparing yourself to strangers, or saying yes to things you don't care about. Your attention is expensive. Spend it intentionally."
+      },
+
+      {
+        type: "heading",
+        content: "Build Systems, Not Motivation"
+      },
+      {
+        type: "paragraph",
+        content:
+          "Motivation is unreliable. Nobody wakes up every day feeling inspired. People who seem disciplined usually have boring systems."
+      },
+      {
+        type: "list",
+        items: [
+          "Want to read more? Keep the book on your desk.",
+          "Want to study consistently? Study at the same time every day.",
+          "Want to exercise? Lay out your clothes beforehand."
+        ]
+      },
+      {
+        type: "quote",
+        content: "You don't rise to your goals. You fall to your systems."
+      },
+
+      {
+        type: "heading",
+        content: "Learn to Be Bored"
+      },
+      {
+        type: "paragraph",
+        content:
+          "Boredom is becoming a superpower. Most people can't sit with one thing for thirty minutes without checking notifications."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Deep work requires discomfort. Some days are repetitive and boring, and that's okay. Success isn't built on extraordinary moments. It's built on ordinary moments repeated for years."
+      },
+
+      {
+        type: "heading",
+        content: "Stop Comparing Timelines"
+      },
+      {
+        type: "paragraph",
+        content:
+          "Social media has convinced everyone they're late. Someone is buying a house at 23. Someone is becoming a millionaire at 19. Someone is traveling the world. Meanwhile, you're wondering if you're behind."
+      },
+      {
+        type: "paragraph",
+        content:
+          "You're not. People show highlights, not reality. The goal isn't to beat everyone else. The goal is to create a life that makes sense to you."
+      },
+
+      {
+        type: "heading",
+        content: "Take Care of Your Body"
+      },
+      {
+        type: "paragraph",
+        content:
+          "People chase dream lives while treating their bodies like rental cars. Sleep matters. Walking matters. Drinking water matters. Protein matters. Sunlight matters."
+      },
+      {
+        type: "paragraph",
+        content:
+          "These aren't boring health tips. They're performance tools. A tired mind creates tired dreams."
+      },
+
+      {
+        type: "heading",
+        content: "Have Fewer Goals, But Bigger Standards"
+      },
+      {
+        type: "paragraph",
+        content:
+          "You don't need a hundred ambitions. You need a few ambitions and high standards."
+      },
+      {
+        type: "list",
+        items: [
+          "Show up when you don't feel like it.",
+          "Finish what you start.",
+          "Keep promises to yourself.",
+          "Speak honestly.",
+          "Stay curious."
+        ]
+      },
+      {
+        type: "paragraph",
+        content:
+          "These simple things create extraordinary people over time."
+      },
+
+      {
+        type: "heading",
+        content: "My Favorite Question"
+      },
+      {
+        type: "quote",
+        content:
+          "What would the future version of me thank me for doing today?"
+      },
+      {
+        type: "paragraph",
+        content:
+          "Maybe it's studying. Maybe it's exercising. Maybe it's saving money. Maybe it's putting the phone away and sleeping early."
+      },
+      {
+        type: "paragraph",
+        content:
+          "Dream lives aren't built in dramatic moments. They're built quietly. And usually, nobody notices except you. Until one day, you wake up and realize that the life you once dreamed about is simply your normal life. And that's a beautiful thing."
+      }
     ]
-  },
-  {
-    type: "paragraph",
-    content:
-      "Winning three important things every day compounds faster than constantly feeling overwhelmed."
-  },
-
-  {
-    type: "heading",
-    content: "Protect Your Energy Like Money"
-  },
-  {
-    type: "paragraph",
-    content:
-      "People understand saving money. They don't understand saving energy. You can always make money again, but mental energy is limited."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Stop wasting it arguing online, doom-scrolling, comparing yourself to strangers, or saying yes to things you don't care about. Your attention is expensive. Spend it intentionally."
-  },
-
-  {
-    type: "heading",
-    content: "Build Systems, Not Motivation"
-  },
-  {
-    type: "paragraph",
-    content:
-      "Motivation is unreliable. Nobody wakes up every day feeling inspired. People who seem disciplined usually have boring systems."
-  },
-  {
-    type: "list",
-    items: [
-      "Want to read more? Keep the book on your desk.",
-      "Want to study consistently? Study at the same time every day.",
-      "Want to exercise? Lay out your clothes beforehand."
-    ]
-  },
-  {
-    type: "quote",
-    content: "You don't rise to your goals. You fall to your systems."
-  },
-
-  {
-    type: "heading",
-    content: "Learn to Be Bored"
-  },
-  {
-    type: "paragraph",
-    content:
-      "Boredom is becoming a superpower. Most people can't sit with one thing for thirty minutes without checking notifications."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Deep work requires discomfort. Some days are repetitive and boring, and that's okay. Success isn't built on extraordinary moments. It's built on ordinary moments repeated for years."
-  },
-
-  {
-    type: "heading",
-    content: "Stop Comparing Timelines"
-  },
-  {
-    type: "paragraph",
-    content:
-      "Social media has convinced everyone they're late. Someone is buying a house at 23. Someone is becoming a millionaire at 19. Someone is traveling the world. Meanwhile, you're wondering if you're behind."
-  },
-  {
-    type: "paragraph",
-    content:
-      "You're not. People show highlights, not reality. The goal isn't to beat everyone else. The goal is to create a life that makes sense to you."
-  },
-
-  {
-    type: "heading",
-    content: "Take Care of Your Body"
-  },
-  {
-    type: "paragraph",
-    content:
-      "People chase dream lives while treating their bodies like rental cars. Sleep matters. Walking matters. Drinking water matters. Protein matters. Sunlight matters."
-  },
-  {
-    type: "paragraph",
-    content:
-      "These aren't boring health tips. They're performance tools. A tired mind creates tired dreams."
-  },
-
-  {
-    type: "heading",
-    content: "Have Fewer Goals, But Bigger Standards"
-  },
-  {
-    type: "paragraph",
-    content:
-      "You don't need a hundred ambitions. You need a few ambitions and high standards."
-  },
-  {
-    type: "list",
-    items: [
-      "Show up when you don't feel like it.",
-      "Finish what you start.",
-      "Keep promises to yourself.",
-      "Speak honestly.",
-      "Stay curious."
-    ]
-  },
-  {
-    type: "paragraph",
-    content:
-      "These simple things create extraordinary people over time."
-  },
-
-  {
-    type: "heading",
-    content: "My Favorite Question"
-  },
-  {
-    type: "quote",
-    content:
-      "What would the future version of me thank me for doing today?"
-  },
-  {
-    type: "paragraph",
-    content:
-      "Maybe it's studying. Maybe it's exercising. Maybe it's saving money. Maybe it's putting the phone away and sleeping early."
-  },
-  {
-    type: "paragraph",
-    content:
-      "Dream lives aren't built in dramatic moments. They're built quietly. And usually, nobody notices except you. Until one day, you wake up and realize that the life you once dreamed about is simply your normal life. And that's a beautiful thing."
-  }
-]
   };
 
+  // Calculate dynamic reading time
+  const calculatedReadTime = calculateReadTime(post.sections);
 
   const styles = {
     container: {
@@ -212,6 +230,9 @@ export default function BlogPage() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      position: 'sticky',
+      top: 0,
+      zIndex: 10,
     },
     logo: {
       fontSize: '1.5rem',
@@ -308,6 +329,12 @@ export default function BlogPage() {
 
   return (
     <div style={styles.container}>
+      {/* Scroll Progress Bar at top of viewport */}
+      <ProgressBar />
+
+      {/* Dynamic Context Lens header */}
+      <ContextLens />
+
       <nav style={styles.nav}>
         <Link href="/blogs" style={styles.logo}>AurumX</Link>
         <div style={styles.navLinks}>
@@ -323,7 +350,8 @@ export default function BlogPage() {
             <span>•</span>
             <span>{post.date}</span>
             <span>•</span>
-            <span>{post.readTime}</span>
+            {/* Dynamic reading time */}
+            <span>{calculatedReadTime}</span>
           </div>
           <h1 style={styles.title}>{post.title}</h1>
 
@@ -405,7 +433,7 @@ export default function BlogPage() {
           <div style={styles.sidebarWidget}>
             <h3 style={styles.widgetTitle}>Meet the Author</h3>
             <p style={styles.authorText}>
-              <strong>{post.author}</strong> is a Game Developer, content creator, and writes about productivity, personal growth, and building a meaningful life.
+              <strong>{post.author}</strong> is a Full-Stack Web Developer Specialized in Next.js Framework.
             </p>
           </div>
         </aside>
@@ -417,3 +445,8 @@ export default function BlogPage() {
     </div>
   );
 }
+
+
+
+
+
