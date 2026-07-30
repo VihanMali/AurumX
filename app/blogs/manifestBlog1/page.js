@@ -213,7 +213,7 @@ export default function BlogPage() {
     ]
   };
 
-  // Calculate dynamic reading time
+  
   const calculatedReadTime = calculateReadTime(post.sections);
 
   const styles = {

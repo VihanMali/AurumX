@@ -82,6 +82,26 @@ const BlogPage = () => {
               </Link>
             </div>
           </div>
+          <div className={styles.card}>
+            <div className={styles.imageWrapper}>
+              <Image
+                src="/technology-1283624_640-1.jpg"
+                alt='manifest blog'
+                fill
+                className={styles.img}
+              />
+            </div>
+            <div className={styles.cardContent}>
+              <h2 className={styles.title}>5 Modern JavaScript Features for Quick Development
+              </h2>
+              <p className={styles.description}>
+                Modern JavaScript (ECMAScript 6 and beyond) is a highly evolved, multi-paradigm programming language that powers both dynamic web browsers and server-side environments.
+              </p>
+              <Link href='/blogs/codingBlog3' className={styles.button}>
+                Read More
+              </Link>
+            </div>
+          </div>
           {/* Repeat card div for more posts */}
         </div>
       </main>
